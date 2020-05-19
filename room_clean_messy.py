@@ -59,7 +59,7 @@ history=model.fit(
 final_accuracy=history.history['accuracy'][-1]
 
 import sys
-sys.stdout=open('t.txt','w')
+sys.stdout=open('/t.txt','w')
 print(final_accuracy)
 sys.stdout.close()
 model.save("room_clean_messy.h5")
