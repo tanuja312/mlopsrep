@@ -57,6 +57,8 @@ history=model.fit(
 
 
 final_accuracy=history.history['accuracy'][-1]
+final_accuracy=final_accuracy*100
+final_accuracy=int(final_accuracy)
 
 import sys
 sys.stdout=open('/t.txt','w')
