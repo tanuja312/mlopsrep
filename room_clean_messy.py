@@ -32,17 +32,18 @@ train_datagen = ImageDataGenerator(
         horizontal_flip=True)
 test_datagen = ImageDataGenerator(rescale=1./255)
 training_set = train_datagen.flow_from_directory(
-        'images/train/',
+        '/newml/images/train/',
         target_size=(64, 64),
         batch_size=32,
         class_mode='binary')
-val_set = train_datagen.flow_from_directory('images/val/', 
-                                      class_mode='binary',
-                                      target_size=(64, 64),
-                                       batch_size=32)
+val_set = train_datagen.flow_from_directory(
+             '/newml/images/val/', 
+             class_mode='binary',
+             target_size=(64, 64),
+             batch_size=32)
 
 test_set = test_datagen.flow_from_directory(
-        'images/test/',
+        '/newml/images/test/',
         target_size=(64, 64),
         batch_size=32,
         class_mode='binary')
@@ -56,7 +57,11 @@ history=model.fit(
 
 
 final_accuracy=history.history['accuracy'][-1]
+
+import sys
+sys.stdout=open('t.txt','w')
 print(final_accuracy)
+sys.stdout.close()
 model.save("room_clean_messy.h5")
 
 
